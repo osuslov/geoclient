@@ -18,10 +18,11 @@ steps:
       echo Downloading geosupport
 
       curl -O https://www1.nyc.gov/assets/planning/download/zip/data-maps/open-data/linux_geo21b_21_2.zip && unzip -o *.zip -d $(System.DefaultWorkingDirectory)/geosupport && rm *.zip
-      
+      curl -O https://github.com/osuslov/geoclient/raw/main/geoclient-jni/dist/v1.0.10/linux-x86_64/libGeoclientImpl_JNI.so
       export GS_LIBRARY_PATH=$(System.DefaultWorkingDirectory)/geosupport/version-21b_21.2/lib
       export GEOFILES=$(System.DefaultWorkingDirectory)/geosupport/version-21b_21.2/fls
       export GS_INCLUDE_PATH=$(System.DefaultWorkingDirectory)/geosupport/version-21b_21.2/include/foruser
+      export GC_LIBRARY_PATH=$(System.DefaultWorkingDirectory)
       echo Done
     workingDirectory: '$(System.DefaultWorkingDirectory)'
 
@@ -30,7 +31,7 @@ steps:
     workingDirectory: ''
     gradleWrapperFile: 'gradlew'
     gradleOptions: '-Xmx3072m'
-    options: '--debug --project-prop gsLibraryPath=./geosupport/lib --project-prop gsGeofiles=./geosupport/fls --project-prop gsIncludePath=./geosupport/include/foruser'
+    options: '--debug --project-prop gcLibraryPath=./ --project-prop gsLibraryPath=./geosupport/lib --project-prop gsGeofiles=./geosupport/fls --project-prop gsIncludePath=./geosupport/include/foruser'
     javaHomeOption: 'JDKVersion'
     jdkVersionOption: '1.8'
     jdkArchitectureOption: 'x64'
