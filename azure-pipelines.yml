@@ -19,18 +19,18 @@ steps:
 
       curl -O https://www1.nyc.gov/assets/planning/download/zip/data-maps/open-data/linux_geo21b_21_2.zip && unzip -o *.zip -d $(System.DefaultWorkingDirectory)/geosupport && rm *.zip
       
-      export GS_LIBRARY_PATH=./geosupport/version-21b_21.2/lib
-      export GEOFILES=./geosupport/version-21b_21.2/fls
-      export GS_INCLUDE_PATH=./geosupport/version-21b_21.2/include/foruser
+      export GS_LIBRARY_PATH=$(System.DefaultWorkingDirectory)/geosupport/version-21b_21.2/lib
+      export GEOFILES=$(System.DefaultWorkingDirectory)/geosupport/version-21b_21.2/fls
+      export GS_INCLUDE_PATH=$(System.DefaultWorkingDirectory)/geosupport/version-21b_21.2/include/foruser
       echo Done
-    workingDirectory: ''
+    workingDirectory: '$(System.DefaultWorkingDirectory)'
 - task: file-creator@6
   inputs:
     filepath: '$(System.DefaultWorkingDirectory)/gradle.properties'
     filecontent: |
-      gsLibraryPath=./geosupport/lib
-      gsGeofiles=./geosupport/fls
-      gsIncludePath=./geosupport/include/foruser
+      gsLibraryPath=$(System.DefaultWorkingDirectory)/geosupport/lib
+      gsGeofiles=$(System.DefaultWorkingDirectory)/geosupport/fls
+      gsIncludePath=$(System.DefaultWorkingDirectory)/geosupport/include/foruser
     fileoverwrite: true
     verbose: true
 - task: Gradle@2
