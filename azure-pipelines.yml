@@ -24,20 +24,13 @@ steps:
       export GS_INCLUDE_PATH=$(System.DefaultWorkingDirectory)/geosupport/version-21b_21.2/include/foruser
       echo Done
     workingDirectory: '$(System.DefaultWorkingDirectory)'
-- task: file-creator@6
-  inputs:
-    filepath: '$(System.DefaultWorkingDirectory)/gradle.properties'
-    filecontent: |
-      gsLibraryPath=$(System.DefaultWorkingDirectory)/geosupport/lib
-      gsGeofiles=$(System.DefaultWorkingDirectory)/geosupport/fls
-      gsIncludePath=$(System.DefaultWorkingDirectory)/geosupport/include/foruser
-    fileoverwrite: true
-    verbose: true
+
 - task: Gradle@2
   inputs:
-    workingDirectory: '$(System.DefaultWorkingDirectory)'
+    workingDirectory: ''
     gradleWrapperFile: 'gradlew'
     gradleOptions: '-Xmx3072m'
+    options: '--project-prop gsLibraryPath=./geosupport/lib --project-prop gsGeofiles=./geosupport/fls --project-prop gsIncludePath=./geosupport/include/foruser'
     javaHomeOption: 'JDKVersion'
     jdkVersionOption: '1.8'
     jdkArchitectureOption: 'x64'
