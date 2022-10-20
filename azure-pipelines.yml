@@ -32,7 +32,7 @@ steps:
     workingDirectory: ''
     gradleWrapperFile: 'gradlew'
     gradleOptions: '-Xmx3072m'
-    options: '--debug --project-prop gcLibraryPath=./ --project-prop gsLibraryPath=./geosupport/lib --project-prop gsGeofiles=./geosupport/fls --project-prop gsIncludePath=./geosupport/include/foruser'
+    options: '--project-prop gcLibraryPath=./ --project-prop gsLibraryPath=./geosupport/lib --project-prop gsGeofiles=./geosupport/fls --project-prop gsIncludePath=./geosupport/include/foruser'
     javaHomeOption: 'JDKVersion'
     jdkVersionOption: '1.8'
     jdkArchitectureOption: 'x64'
