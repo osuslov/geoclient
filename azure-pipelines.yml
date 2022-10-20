@@ -18,8 +18,8 @@ steps:
       echo Downloading geosupport
 
       curl -O https://www1.nyc.gov/assets/planning/download/zip/data-maps/open-data/linux_geo21b_21_2.zip && unzip -o *.zip -d $(System.DefaultWorkingDirectory)/geosupport && rm *.zip
-      curl -O https://github.com/osuslov/geoclient/raw/main/geoclient-jni/dist/v1.0.10/linux-x86_64/libGeoclientImpl_JNI.so
-      curl -O https://github.com/osuslov/geoclient/raw/main/geoclient-jni/dist/v1.0.10/linux-x86_64/libgeoclientjni.so
+      curl -O https://raw.githubusercontent.com/osuslov/geoclient/main/geoclient-jni/dist/v1.0.10/linux-x86_64/libGeoclientImpl_JNI.so
+      curl -O https://raw.githubusercontent.com/osuslov/geoclient/main/geoclient-jni/dist/v1.0.10/linux-x86_64/libgeoclientjni.so
       cp libgeoclientjni.so libgeoclientjni-linux_x64.so
       echo `ls -ltrah`
       export GS_LIBRARY_PATH=$(System.DefaultWorkingDirectory)/geosupport/version-21b_21.2/lib
