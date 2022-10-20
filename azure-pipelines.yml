@@ -23,17 +23,7 @@ steps:
       export GEOFILES=$(System.DefaultWorkingDirectory)/geosupport/version-21b_21.2/fls
       export GS_INCLUDE_PATH=$(System.DefaultWorkingDirectory)/geosupport/version-21b_21.2/include/foruser
       echo Done
+      find . -name libgeoclientjni.so
     workingDirectory: '$(System.DefaultWorkingDirectory)'
 
-- task: Gradle@2
-  inputs:
-    workingDirectory: ''
-    gradleWrapperFile: 'gradlew'
-    gradleOptions: '-Xmx3072m'
-    options: '--project-prop gsLibraryPath=./geosupport/lib --project-prop gsGeofiles=./geosupport/fls --project-prop gsIncludePath=./geosupport/include/foruser'
-    javaHomeOption: 'JDKVersion'
-    jdkVersionOption: '1.8'
-    jdkArchitectureOption: 'x64'
-    publishJUnitResults: true
-    testResultsFiles: '**/TEST-*.xml'
-    tasks: 'build'
+
