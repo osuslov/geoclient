@@ -35,7 +35,7 @@ steps:
     workingDirectory: ''
     gradleWrapperFile: 'gradlew'
     gradleOptions: '-Xmx3072m'
-    options: '--project-prop gcLibraryPath=$(System.DefaultWorkingDirectory)/geosupport/version-21b_21.2/lib --project-prop gsLibraryPath=$(System.DefaultWorkingDirectory)/geosupport/version-21b_21.2/lib --project-prop gsGeofiles=$(System.DefaultWorkingDirectory)/geosupport/version-21b_21.2/fls --project-prop gsIncludePath=$(System.DefaultWorkingDirectory)/geosupport/version-21b_21.2/include/foruser'
+    options: '-PgcLibraryPath=$(System.DefaultWorkingDirectory)/geosupport/version-21b_21.2/lib -PgsLibraryPath=$(System.DefaultWorkingDirectory)/geosupport/version-21b_21.2/lib -PgsGeofiles=$(System.DefaultWorkingDirectory)/geosupport/version-21b_21.2/fls -PgsIncludePath=$(System.DefaultWorkingDirectory)/geosupport/version-21b_21.2/include/foruser'
     javaHomeOption: 'JDKVersion'
     jdkVersionOption: '1.8'
     jdkArchitectureOption: 'x64'
