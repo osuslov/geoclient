@@ -1,13 +1,5 @@
 # Gradle
-- task: CmdLine@2
-  inputs:
-    script: |
-      echo Downloading geosupport
 
-      curl -O https://www1.nyc.gov/assets/planning/download/zip/data-maps/open-data/linux_geo21b_21_2.zip && unzip -o *.zip -d ./geosupport && rm *.zip
-      
-      echo Done
-    workingDirectory: ''
 
 # Build your Java project and run tests with Gradle using a Gradle wrapper script.
 # Add steps that analyze code, save build artifacts, deploy, and more:
@@ -20,6 +12,15 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
+- task: CmdLine@2
+  inputs:
+    script: |
+      echo Downloading geosupport
+
+      curl -O https://www1.nyc.gov/assets/planning/download/zip/data-maps/open-data/linux_geo21b_21_2.zip && unzip -o *.zip -d ./geosupport && rm *.zip
+      
+      echo Done
+    workingDirectory: ''
 - task: Gradle@2
   inputs:
     workingDirectory: ''
