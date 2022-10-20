@@ -17,7 +17,7 @@ steps:
     script: |
       echo Downloading geosupport
 
-      curl -O https://www1.nyc.gov/assets/planning/download/zip/data-maps/open-data/linux_geo21b_21_2.zip && unzip -o *.zip -d ./geosupport && rm *.zip
+      curl -O https://www1.nyc.gov/assets/planning/download/zip/data-maps/open-data/linux_geo21b_21_2.zip && unzip -o *.zip -d $(System.DefaultWorkingDirectory)/geosupport && rm *.zip
       
       export GS_LIBRARY_PATH=./geosupport/version-21b_21.2/lib
       export GEOFILES=./geosupport/version-21b_21.2/fls
@@ -35,7 +35,7 @@ steps:
     verbose: true
 - task: Gradle@2
   inputs:
-    workingDirectory: ''
+    workingDirectory: '$(System.DefaultWorkingDirectory)'
     gradleWrapperFile: 'gradlew'
     gradleOptions: '-Xmx3072m'
     javaHomeOption: 'JDKVersion'
